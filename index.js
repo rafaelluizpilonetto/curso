@@ -94,6 +94,10 @@ app.post('/candidatos', (req, res) => {
 
 app.put('/candidatos/:id', (req, res) => {
     const { id } = req.params;
+    let idnumero = parseInt(id)
+    if(isNaN(idnumero)){
+      return res.status(400).json({mensagem: "o id precisa ser um número inteiro"})
+    }
     const {
       nome,
       rg,
