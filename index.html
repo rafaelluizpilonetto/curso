@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrossel Fixo</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    .carousel {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      perspective: 1500px;
+      transform-style: preserve-3d;
+    }
+
+    .card {
+      position: absolute;
+      width: 250px;
+      height: 350px;
+      background: #6161619b;
+      border-radius: 20px;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      backface-visibility: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.51);
+      transition: transform 1s;
+      cursor: grab;
+      user-select: none; /* 🚫 impede selecionar o texto */
+    }
+
+    .card:active {
+      cursor: grabbing;
+    }
+  </style>
+</head>
+<body>
+  <div class="carousel" id="carousel">
+    <div class="card">Curso 1</div>
+    <div class="card">Curso 2</div>
+    <div class="card">Curso 3</div>
+    <div class="card">Curso 4</div>
+    <div class="card">Curso 5</div>
+  </div>
+
+  <script>
+    const carousel = document.getElementById('carousel');
+    const cards = [...document.querySelectorAll('.card')];
+    let currentIndex = 0;
+
+    const angleStep = 360 / cards.length;
+
+    function updateCarousel() {
+      cards.forEach((card, i) => {
+        const rotation = angleStep * (i - currentIndex);
+        card.style.transform = `rotateY(${rotation}deg) translateZ(400px)`;
+      });
+    }
+
+    function nextCourse() {
+      currentIndex = (currentIndex + 1) % cards.length;
+      updateCarousel();
+    }
+
+    function prevCourse() {
+      currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+      updateCarousel();
+    }
+
+    // arrastar com o mouse
+    let startX = 0;
+    let isDragging = false;
+
+    carousel.addEventListener('mousedown', e => {
+      startX = e.clientX;
+      isDragging = true;
+    });
+
+    document.addEventListener('mouseup', e => {
+      if (isDragging) {
+        let deltaX = e.clientX - startX;
+        if (deltaX > 50) {
+          prevCourse();
+        } else if (deltaX < -50) {
+          nextCourse();
+        }
+      }
+      isDragging = false;
+    });
+
+    updateCarousel();
+  </script>
+</body>
+</html>

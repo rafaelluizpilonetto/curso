@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 
+const nodemailer = require('nodemailer');
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -104,7 +106,6 @@ app.put('/candidatos/:id', (req, res) => {
       expe_por,
       cpf,
       data_nasc,
-      endereco: {
         rua,
         numero_casa,
         bairro,
@@ -115,7 +116,6 @@ app.put('/candidatos/:id', (req, res) => {
         celular_b,
         email,
         curso
-      } = {} // default para evitar erro caso endereco não seja enviado
     } = req.body;
   
     const usuario = candidatos.find(u => u.id == id);

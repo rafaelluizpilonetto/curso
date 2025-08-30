@@ -17,5 +17,8 @@
     "url": "https://github.com/Ykwim-77/curso/issues"
   },
   "homepage": "https://github.com/Ykwim-77/curso#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "nodemailer": "^7.0.6"
+  }
 }

@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+header{
+    height: 100px;
+}
+.card{
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    text-align: center;
+    justify-content: center; /* eixo horizontal */
+    align-items: center; 
+    margin-top: 5%;
+    background: rgba(211, 211, 211, 0.447);
+    display: inline-block;
+    padding: 2% 3% 3% 3%;
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgb(104, 104, 104);
+    box-shadow: initial 0 8px 20px  rgb(104, 104, 104);
+}
+li{
+    text-align: start;
+    margin: 3vh;
+}
+.candidato{
+    margin: 5px;
+    background: rgba(104, 104, 104, 0.308);
+    padding: 3px;
+    border-radius: 15px;
+    width: 50%;
+    justify-content: center;
+    align-self: center;
+}
