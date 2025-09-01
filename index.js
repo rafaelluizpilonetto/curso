@@ -148,7 +148,7 @@ app.put('/candidatos/:id', (req, res) => {
 //   secure: false,
 //   auth: {
 //     user: 'christian.darosa0106@gmail.com',
-//     pass: 'bossgames123'
+//     pass: ''
 //   }
 // });
 
