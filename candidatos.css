@@ -11,9 +11,9 @@ header{
     transform: translate(-50%, -50%);
     position: absolute;
     text-align: center;
-    justify-content: center; /* eixo horizontal */
+    justify-content: center; 
     align-items: center; 
-    margin-top: 5%;
+    margin-top: 3%;
     background: rgba(211, 211, 211, 0.447);
     display: inline-block;
     padding: 2% 3% 3% 3%;
@@ -21,16 +21,55 @@ header{
     box-shadow: 0 8px 20px rgb(104, 104, 104);
     box-shadow: initial 0 8px 20px  rgb(104, 104, 104);
 }
+#listaUsuarios {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 3 colunas iguais */
+    gap: px; /* espaço entre os cards */
+    list-style: none; /* tira as bolinhas do <ul> */
+    padding: 10px;
+    align-self: center;
+    justify-content: center;
+}
 li{
     text-align: start;
     margin: 3vh;
 }
 .candidato{
-    margin: 5px;
-    background: rgba(104, 104, 104, 0.308);
-    padding: 3px;
+    margin: 3% auto;
+    font-size: 100%;
+    box-shadow: 0 8px 20px rgb(104, 104, 104);
+    /* box-shadow: inset 0 8px 20px  rgb(104, 104, 104); */
+    background: rgba(204, 203, 203, 0.308);
+    padding: 5%;
     border-radius: 15px;
-    width: 50%;
+    width: 80%;
     justify-content: center;
-    align-self: center;
+    align-content: center;
+    text-align: center;
+    min-width: 50%;
+}
+.informacoes{
+    justify-content: flex-start;
+}
+.linha-nome {
+    text-align: start;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.linha-celular {
+}
+
+.linha-cidade {
+}
+
+.linha-curso {
+}
+
+.linha-nasc {
+}
+@media (max-width: 768px) {
+  #listaUsuarios {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

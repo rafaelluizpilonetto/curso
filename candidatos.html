@@ -6,74 +6,37 @@
   <link rel="stylesheet" href="candidatos.css">
 </head>
 <body>
-  <header></header>
-<div>
-  <h1>Usuários</h1>
-  <div id="containerCandidatos"></div>
-</div>
+  <header>
+    <h1>Lista de Usuários</h1>
+  </header>
+  <ul id="listaUsuarios"></ul>
+
   <script>
-    const API_URL = "http://localhost:3000/candidatos"; 
+    // Chama a API
+    fetch("http://localhost:3000/candidatos")
+      .then(response => response.json())
+      .then(dados => {
+        const lista = document.getElementById("listaUsuarios");
 
-    async function carregarUsuarios() {
-      const resposta = await fetch(API_URL); 
-      const usuarios = await resposta.json(); 
-      console.log(usuarios); // debug
+        // Percorre os dados e cria <li> para cada usuário
+        dados.forEach(usuario => {
+          const item = document.createElement("li");
+          item.classList.add("candidato");
+item.innerHTML = `
+          <div class="informacoes">
+            <div class="info linha-nome" id="nome-${usuario.id}">Nome: ${usuario.nome}</div>
+            <div class="info linha-celular" id="celular-${usuario.id}">Celular: ${usuario.celular_a}</div>
+            <div class="info linha-cidade" id="cidade-${usuario.id}">Cidade: ${usuario.cidade}</div>
+            <div class="info linha-curso" id="curso-${usuario.id}">Curso: ${usuario.curso}</div>
+            <div class="info linha-nasc" id="nasc-${usuario.id}">Nascimento: ${usuario.data_nasc}</div>
+          </div
+`;
 
-      const container = document.getElementById("containerCandidatos");
-      container.innerHTML = "";
 
-      usuarios.forEach(u => {
-        // cria div para cada candidato
-        const div = document.createElement("div");
-        div.classList.add("candidato");
-
-        const ul = document.createElement("ul");
-
-        // adiciona cada informação do candidato
-        for (let key in u) {
-          const li = document.createElement("li");
-          li.textContent = `${key.charAt(0).toUpperCase() + key.slice(1)}: ${u[key]}`;
-          ul.appendChild(li);
-        }
-
-        div.appendChild(ul);
-        container.appendChild(div);
-      });
-    }
-
-    // POST -> criar usuário
-    async function criarUsuario() {
-      const novo = { nome: "Christian", email: "chris@example.com" };
-
-      const resposta = await fetch(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(novo)
-      });
-
-      if (resposta.ok) {
-        alert("Usuário criado!");
-        carregarUsuarios();
-      }
-    }
-
-    // PUT -> atualizar usuário
-    async function atualizarUsuario(id) {
-      const atualizado = { nome: "Christian Atualizado", email: "novoemail@example.com" };
-
-      const resposta = await fetch(`${API_URL}/${id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(atualizado)
-      });
-
-      if (resposta.ok) {
-        alert("Usuário atualizado!");
-        carregarUsuarios();
-      }
-    }
-
-    carregarUsuarios();
+          lista.appendChild(item);
+        });
+      })
+      .catch(error => console.error("Erro ao buscar API:", error));
   </script>
 </body>
 </html>

@@ -1,12 +1,12 @@
 import express from "express";
 import cors from "cors";
+import nodemailer from "nodemailer";
 
-const nodemailer = require('nodemailer');
+
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-
 let ultimoId = 1;
 
 let candidatos = [
@@ -142,6 +142,26 @@ app.put('/candidatos/:id', (req, res) => {
   
     return res.json({ mensagem: `Usuário ${usuario.nome} (id ${usuario.id}) foi alterado`, usuario });
 });
+// const transporter = nodemailer.createTransport({
+//   host: 'smtp.gmail.com',
+//   port: 587,
+//   secure: false,
+//   auth: {
+//     user: 'christian.darosa0106@gmail.com',
+//     pass: 'bossgames123'
+//   }
+// });
 
-
+// function enviarEmail(to, subject, text, html) {
+//   const mailOptions = { from: 'christian.darosa0106@gmail.com', to, subject, text, html };
+//   transporter.sendMail(mailOptions, (error, info) => {
+//     if (error) return console.log('Erro: ', error);
+//     console.log('Email enviado: ', info.response);
+//   });
+// }
+// app.post('/candidatos/enviar-email', (req, res) => {
+//   const { nome, email, mensagem } = req.body;
+//   enviarEmail(email, `Mensagem de ${nome}`, mensagem, `<b>${mensagem}</b>`);
+//   res.send('Email enviado!');
+// });
 app.listen(3000)
