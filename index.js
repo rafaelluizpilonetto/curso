@@ -59,8 +59,7 @@ app.post('/candidatos', (req, res) => {
   
 
     if (!nome || !rg || !expe_por || !cpf || !data_nasc ||
-        !rua || !numero_casa || !bairro || !cidade || !uf ||
-        !tel_fixo || !celular_a || !celular_b || !email || !curso) {
+        !rua || !numero_casa || !bairro || !cidade || !uf  || !email || !curso) {
         return res.status(400).json({ mensagem: "Todos os campos são obrigatórios" });
     }
 
@@ -124,22 +123,16 @@ app.put('/candidatos/:id', (req, res) => {
       return res.status(404).json({ mensagem: "usuário não encontrado!!!" });
     }
 
-    if (nome) usuario.nome = nome;
-    if (rg) usuario.rg = rg;
-    if (expe_por) usuario.expe_por = expe_por;
-    if (cpf) usuario.cpf = cpf;
-    if (data_nasc) usuario.data_nasc = data_nasc;
-    if (rua) usuario.endereco.rua = rua;
-    if (numero_casa) usuario.endereco.numero_casa = numero_casa;
-    if (bairro) usuario.endereco.bairro = bairro;
-    if (cidade) usuario.endereco.cidade = cidade;
-    if (uf) usuario.endereco.uf = uf;
-    if (tel_fixo) usuario.endereco.tel_fixo = tel_fixo;
-    if (celular_a) usuario.endereco.celular_a = celular_a;
-    if (celular_b) usuario.endereco.celular_b = celular_b;
-    if (email) usuario.endereco.email = email;
-    if (curso) usuario.endereco.curso = curso;
-  
+if (rua) usuario.rua = rua;
+if (numero_casa) usuario.numero_casa = numero_casa;
+if (bairro) usuario.bairro = bairro;
+if (cidade) usuario.cidade = cidade;
+if (uf) usuario.uf = uf;
+if (tel_fixo) usuario.tel_fixo = tel_fixo;
+if (celular_a) usuario.celular_a = celular_a;
+if (celular_b) usuario.celular_b = celular_b;
+if (email) usuario.email = email;
+if (curso) usuario.curso = curso;
     return res.json({ mensagem: `Usuário ${usuario.nome} (id ${usuario.id}) foi alterado`, usuario });
 });
 // const transporter = nodemailer.createTransport({
