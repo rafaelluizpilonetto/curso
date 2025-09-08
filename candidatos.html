@@ -10,6 +10,98 @@
     <h1>Lista de Usuários</h1>
   </header>
   <ul id="listaUsuarios"></ul>
+<div id="modal" class="modal">
+  <div class="modal-conteudo">
+    <span id="fechar">&times;</span>
+    <h2>Editar Usuário</h2>
+
+    <form id="formUsuario">
+      <!-- Dados principais -->
+      <div class="form-grupo">
+        <label>Número da Inscrição:</label>
+        <input type="text" id="inputInscricao">
+      </div>
+
+      <div class="form-grupo">
+        <label>Nome do(a) Candidato(a) / CGM:</label>
+        <input type="text" id="inputNome">
+      </div>
+
+      <div class="form-grupo">
+        <label>Curso:</label>
+        <input type="text" id="inputCurso">
+      </div>
+
+      <div class="form-grupo">
+        <label>Turno:</label>
+        <input type="text" id="inputTurno">
+      </div>
+
+      <!-- Beneficiário -->
+      <h3>Beneficiário de Programas Federais</h3>
+      <div class="form-radio">
+        <label><input type="radio" name="beneficiario" value="nao"> Não (00)</label>
+        <label><input type="radio" name="beneficiario" value="sim"> Sim</label>
+        <input type="text" id="inputNIS" placeholder="Número NIS">
+      </div>
+
+      <!-- Origem Escolar -->
+      <h3>Origem Escolar</h3>
+      <div class="form-radio">
+        <label><input type="radio" name="origem" value="85"> Rede Pública / Bolsista integral (85)</label>
+        <label><input type="radio" name="origem" value="80"> Parcial Pública (até 1 ano Particular) (80)</label>
+        <label><input type="radio" name="origem" value="75"> Parcial Pública (2-3 anos Particular) (75)</label>
+        <label><input type="radio" name="origem" value="70"> Integral Particular (70)</label>
+      </div>
+
+      <!-- Médias -->
+      <h3>Médias</h3>
+      <div class="form-grupo">
+        <label>Média 9º ano:</label>
+        <input type="number" id="inputMedia9" min="0" max="100">
+      </div>
+
+      <!-- Disciplinas -->
+      <h3>Disciplinas</h3>
+      <div class="form-duas-colunas">
+        <div>
+          <label>Língua Portuguesa:</label>
+          <input type="number" id="inputPortugues" min="0" max="100">
+        </div>
+        <div>
+          <label>Matemática:</label>
+          <input type="number" id="inputMatematica" min="0" max="100">
+        </div>
+      </div>
+
+      <div class="form-grupo">
+        <label>Média Aritmética (0-100):</label>
+        <input type="number" id="inputMediaDisciplinas" min="0" max="100">
+      </div>
+
+      <!-- Outros -->
+      <h3>Avaliações</h3>
+      <div class="form-duas-colunas">
+        <div>
+          <label>Pontuação Beneficiário + Origem:</label>
+          <input type="number" id="inputPontuacaoBE" min="0" max="100">
+        </div>
+        <div>
+          <label>Entrevista (0-100):</label>
+          <input type="number" id="inputEntrevista" min="0" max="100">
+        </div>
+      </div>
+
+      <div class="form-grupo">
+        <label>Total Geral da Pontuação:</label>
+        <input type="number" id="inputTotal" min="0" max="100">
+      </div>
+
+      <!-- Botão -->
+      <button type="submit">Salvar</button>
+    </form>
+  </div>
+</div>
 
   <script>
     // Chama a API
@@ -32,7 +124,19 @@ item.innerHTML = `
           </div
 `;
 
+        // dentro do forEach
+        item.addEventListener("click", () => {
+          document.getElementById("modal").style.display = "flex";
 
+          // Preenche os inputs com dados do usuário
+          document.getElementById("inputNome").value = usuario.nome;
+          document.getElementById("inputCelular").value = usuario.celular_a;
+        });
+
+        // botão de fechar modal
+        document.getElementById("fechar").addEventListener("click", () => {
+          document.getElementById("modal").style.display = "none";
+        });
           lista.appendChild(item);
         });
       })
