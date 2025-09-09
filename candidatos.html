@@ -6,10 +6,22 @@
   <link rel="stylesheet" href="candidatos.css">
 </head>
 <body>
-  <header>
-    <h1>Lista de Usuários</h1>
+<header>
+    <div class="bannerTopo">
+      <img src="formulario-de-inscricao/curso/imagens/logoGoverno.png" alt="Logo do Governo" class="logoTopo">
+      <div class="textosTopo">
+        <h1>Governo do Estado do Paraná</h1>
+        <p class="subtitulo">Portal Educacional</p>
+      </div>
+      <div class="barra-pesquisa">
+        <input type="text" placeholder="Pesquisar...">
+        <button type="submit">🔍</button>
+      </div>
+    </div>
   </header>
+  <div class="principal">
   <ul id="listaUsuarios"></ul>
+  </div>
 <div id="modal" class="modal">
   <div class="modal-conteudo">
     <span id="fechar">&times;</span>
@@ -23,7 +35,7 @@
       </div>
 
       <div class="form-grupo">
-        <label>Nome do(a) Candidato(a) / CGM:</label>
+        <label> CGM:</label>
         <input type="text" id="inputNome">
       </div>
 
@@ -102,14 +114,42 @@
     </form>
   </div>
 </div>
-
+        <footer>
+            <div class="footer">
+                <div class="footer-logo">
+                    <img src="formulario-de-inscricao/curso/imagens/logoGoverno.png" alt="Logo do Governo">
+                    <h2>Governo do Estado do Paraná</h2>
+                </div>
+                <div class="codigos">
+                    <h3>Links úteis</h3>
+                    <ul>
+                        <li><a href="#">Sobre</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Suporte</a></li>
+                    </ul>
+                </div>
+                <div class="contatos">
+                    <h3>Contato</h3>
+                    <p>Email: rafaelpilonetto59@gmail.com</p>
+                    <p>Email: christianmartinkoski@gmail.com</p>
+                    <p>Telefone: (46)999890251</p>
+                    <p>Telefone: (46)99414639</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 Governo do Estado do Paraná • Todos os direitos reservados</p>
+            </div>
+        </footer>
   <script>
     // Chama a API
+    
     fetch("http://localhost:3000/candidatos")
       .then(response => response.json())
       .then(dados => {
         const lista = document.getElementById("listaUsuarios");
-
+        const btnSalvar = document.querySelector("#formUsuario button[type='submit']");
+        
         // Percorre os dados e cria <li> para cada usuário
         dados.forEach(usuario => {
           const item = document.createElement("li");
@@ -129,8 +169,10 @@ item.innerHTML = `
           document.getElementById("modal").style.display = "flex";
 
           // Preenche os inputs com dados do usuário
-          document.getElementById("inputNome").value = usuario.nome;
+          document.getElementById("inputInscricao").value = usuario.id
+          document.getElementById("inputNome").value = usuario.cpf;
           document.getElementById("inputCelular").value = usuario.celular_a;
+          document.getElementById("inputCurso").value = usuario.curso;
         });
 
         // botão de fechar modal
@@ -140,7 +182,10 @@ item.innerHTML = `
           lista.appendChild(item);
         });
       })
+      
       .catch(error => console.error("Erro ao buscar API:", error));
+
+      fetch()
   </script>
 </body>
 </html>
