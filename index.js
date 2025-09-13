@@ -97,7 +97,6 @@ const {
     entrevista,
     total_geral
 } = req.body;
-
   
 
     if (!nome || !rg || !expe_por || !cpf || !data_nasc ||
@@ -161,7 +160,7 @@ const novoUsuario = {
     
 });
 
-app.patch('/candidatos/:id', (req, res) => {
+app.patch('/candidatos', (req, res) => {
     const { id } = req.params;
     let idnumero = parseInt(id)
     if(isNaN(idnumero)){
@@ -204,7 +203,7 @@ const {
     total_geral
 } = req.body;
   
-    const usuario = candidatos.find(u => u.id == id);
+    const usuario = candidatos.find(u => u.id === idnumero);
   
     if (!usuario) {
       return res.status(404).json({ mensagem: "usuário não encontrado!!!" });
@@ -248,7 +247,7 @@ if (media_final_disciplinas) usuario.media_final_disciplinas = media_final_disci
 
 if (pontuacao_benef_origem) usuario.pontuacao_benef_origem = pontuacao_benef_origem;
 if (entrevista) usuario.entrevista = entrevista;
-if (total_geral) usuario.total_geral = total_geral;
+if (total_geral !== undefined) usuario.total_geral = total_geral;
 
     return res.json({ mensagem: `Usuário ${usuario.nome} (id ${usuario.id}) foi alterado`, usuario });
 });
