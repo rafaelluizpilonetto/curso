@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <title>Portal Educacional</title>
+</head>
+<body>
+        <header>
+            <div class="bannerTopo">
+                
+                <!-- Esquerda -->
+                <div class="lado-esquerdo">
+                <img src="imagens/logoGoverno.png" alt="Logo do Governo" class="logoTopo">
+                <div class="textosTopo">
+                    <h1>Governo do Estado do Paraná</h1>
+                    <p class="subtitulo">Portal Educacional</p>
+                </div>
+                </div>
+                <!-- Direita -->
+                <nav class="main-nav">
+                <ul>
+                    <li><a href="home.html"><i class="fas fa-book"></i> Cursos</a></li>
+                    <li><a href="https://g1.globo.com/saude/noticia/2025/04/14/por-que-bolsonaro-fez-varias-cirurgias-apos-facada-quanto-mais-mexe-maior-o-risco.ghtml"><i class="fas fa-newspaper"></i> Notícias</a></li>
+                    <li><a href="#"><i class="fas fa-graduation-cap"></i>Estatisticas</a></li>
+                </ul>
+                </nav>
+
+            </div>
+        </header>
+
+
+    <main>
+        <div class="theme-toggle">
+            <input type="checkbox" id="theme-switch" class="theme-checkbox">
+            <label for="theme-switch" class="theme-label">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
+                <span class="theme-ball"></span>
+            </label>
+        </div>
+
+        <div class="cursosProcurados">Cursos Disponíveis</div>
+        <br><br>
+        <div class="carrosel-container">
+            <button class="carousel-btn prev-btn" aria-label="Curso anterior">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="carrosel" id="carousel">
+                <div id="carousel" class="carousel">
+                <div class="card card1">
+                    <img src="/imagens/logoADM-removebg-preview.png" alt="Logo do curso" class="logoCurso">
+                    <h3>Técnico em Desenvolvimento de Sistemas</h3>
+                    <p>Aprenda a programar e desenvolver sistemas completos para diversas plataformas.</p>
+                    <p class="duracao">Duração: 3-4 anos</p>
+                    <a href="formAluno.html" class="btnInscrever">Inscrever-se</a>
+                </div>
+
+                <div class="card card2">
+                    <img src="imagens/logo_placeholder.png" alt="Logo do curso" class="logoCurso">
+                    <h3>Formação de Docentes</h3>
+                    <p>Prepare-se para ensinar com técnicas modernas e metodologias eficazes.</p>
+                    <p class="duracao">Duração: 3-4 anos</p>
+                    <a href="formAluno.html" class="btnInscrever">Inscrever-se</a>
+                </div>
+
+                <div class="card card3">
+                    <img src="imagens/logo_placeholder.png" alt="Logo do curso" class="logoCurso">
+                    <h3>Técnico em Administração</h3>
+                    <p>Desenvolva habilidades para gerenciar empresas e recursos de forma eficiente.</p>
+                    <p class="duracao">Duração: 3-4 anos</p>
+                    <a href="formAluno.html" class="btnInscrever">Inscrever-se</a>
+                </div>
+
+                <div class="card card4">
+                    <img src="imagens/logo_placeholder.png" alt="Logo do curso" class="logoCurso">
+                    <h3>Técnico em Enfermagem</h3>
+                    <p>Aprenda cuidados de saúde e suporte clínico para diversas áreas médicas.</p>
+                    <p class="duracao">Duração: 3-4 anos</p>
+                    <a href="formAluno.html" class="btnInscrever">Inscrever-se</a>
+                </div>
+
+                <div class="card card5">
+                    <img src="imagens/logo_placeholder.png" alt="Logo do curso" class="logoCurso">
+                    <h3>Técnico em Agronegócio</h3>
+                    <p>Desenvolva competências para gestão e inovação no setor agrícola.</p>
+                    <p class="duracao">Duração: 3-4 anos</p>
+                    <a href="formAluno.html" class="btnInscrever">Inscrever-se</a>
+                </div>
+            </div>
+            </div>
+            
+            <button class="carousel-btn next-btn" aria-label="Próximo curso">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <div class="carousel-indicators">
+                <span class="indicator active" data-index="0"></span>
+                <span class="indicator" data-index="1"></span>
+                <span class="indicator" data-index="2"></span>
+                <span class="indicator" data-index="3"></span>
+                <span class="indicator" data-index="4"></span>
+            </div>
+        </div>
+
+
+        <!-- JS do carrossel -->
+        <script>
+// ==================== CARROSSEL ====================
+
+            const carousel = document.getElementById('carousel');
+            const cards = [...document.querySelectorAll('.card')];
+            const indicators = document.querySelectorAll('.indicator');
+            let currentIndex = 0;
+            const totalCards = cards.length;
+            const angleStep = 360 / totalCards;
+            let autoPlayInterval;
+
+            // Atualiza posição e aparência dos cards
+            function updateCarousel() {
+                cards.forEach((card, i) => {
+                    const angle = angleStep * (i - currentIndex);
+                    card.style.transform = `rotateY(${angle}deg) translateZ(400px)`;
+                    card.style.zIndex = Math.round(Math.cos((i - currentIndex) * angleStep * Math.PI / 180) * 100);
+                    card.style.opacity = (i === currentIndex) ? '1' : '0.7';
+                });
+
+                indicators.forEach((indicator, i) => {
+                    indicator.classList.toggle('active', i === currentIndex);
+                });
+            }
+
+            function nextCourse() {
+                currentIndex = (currentIndex + 1) % totalCards;
+                updateCarousel();
+                resetAutoPlay();
+            }
+
+            function prevCourse() {
+                currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+                updateCarousel();
+                resetAutoPlay();
+            }
+
+            function goToCourse(index) {
+                currentIndex = index;
+                updateCarousel();
+                resetAutoPlay();
+            }
+
+            // Eventos dos botões
+            document.querySelector('.next-btn').addEventListener('click', nextCourse);
+            document.querySelector('.prev-btn').addEventListener('click', prevCourse);
+
+            // Eventos dos indicadores
+            indicators.forEach((indicator, i) => {
+                indicator.addEventListener('click', () => goToCourse(i));
+            });
+
+            // Autoplay
+            function startAutoPlay() {
+                autoPlayInterval = setInterval(nextCourse, 5000);
+            }
+
+            function resetAutoPlay() {
+                clearInterval(autoPlayInterval);
+                startAutoPlay();
+            }
+
+            // Pausa autoplay ao passar o mouse
+            carousel.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+            carousel.addEventListener('mouseleave', startAutoPlay);
+
+            // Inicialização
+            updateCarousel();
+            startAutoPlay();
+
+
+            // ==================== MODO ESCURO ====================
+
+            const themeCheckbox = document.getElementById('theme-switch');
+            const body = document.body;
+
+            // Verifica se há tema salvo no localStorage
+            if (localStorage.getItem('dark-theme') === 'true') {
+                body.classList.add('dark-theme');
+                themeCheckbox.checked = true;
+            }
+
+            // Alterna tema ao clicar no checkbox
+            themeCheckbox.addEventListener('change', () => {
+                body.classList.toggle('dark-theme');
+                
+                // Salva a preferência do usuário
+                localStorage.setItem('dark-theme', themeCheckbox.checked);
+            });
+        </script>
+
+    </main>
+
+    <footer>
+        <div class="footer">
+            <div class="footer-logo">
+                <img src="imagens/logoGoverno.png" alt="Logo do Governo">
+                <h2>Governo do Estado do Paraná</h2>
+            </div>
+            <div class="codigos">
+                <h3>Links úteis</h3>
+                <ul>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Suporte</a></li>
+                </ul>
+            </div>
+            <div class="contatos">
+                <h3>Contato</h3>
+                <p>Email: rafaelpilonetto59@gmail.com</p>
+                <p>Email: christianmartinkoski@gmail.com</p>
+                <p>Telefone: (46) 99989-0251</p>
+                <p>Telefone: (46) 99414-639</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Governo do Estado do Paraná • Todos os direitos reservados</p>
+        </div>
+    </footer>
+</body>
+</html>

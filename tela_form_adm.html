@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tela_form_adm.css"> <!-- Mesmo CSS do formulário aluno -->
+    <title>Ficha de Pontuação - Administração</title>
+</head>
+<body>
+    <header>
+        <div class="bannerTopo">
+            <img src="imagens/logoGoverno.png" alt="Logo do Governo" class="logoTopo">
+            <div class="textosTopo">
+                <h1>Ficha de Pontuação - Cursos Integrados</h1>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <form class="formulario">
+            <fieldset>
+                <legend>Informações do Candidato</legend>
+                <label for="numeroInscricao">Número da Inscrição:</label>
+                <input type="text" id="numeroInscricao" name="numeroInscricao">
+
+                <label for="nomeCandidato">Nome do(a) Candidato(a):</label>
+                <input type="text" id="nomeCandidato" name="nomeCandidato">
+
+                <label for="cgm">CGM:</label>
+                <input type="text" id="cgm" name="cgm">
+
+                <label for="curso">Curso:</label>
+                <input type="text" id="curso" name="curso">
+
+                <label for="turno">Turno:</label>
+                <input type="text" id="turno" name="turno">
+            </fieldset>
+
+            <fieldset>
+                <legend>Beneficiário de Programas Federais</legend>
+                <label>
+                    <input type="radio" name="beneficiario" value="nao">
+                    Não (0 pontos)
+                </label>
+                <label>
+                    <input type="radio" name="beneficiario" value="sim">
+                    Sim – Informar o Número NIS (10 pontos)
+                </label>
+                    <input type="text" placeholder="Número NIS" name="nis" id="nis">
+            </fieldset>
+
+            <fieldset>  
+                <legend>Origem Escolar</legend>
+                <label>
+                    <input type="radio" name="origemEscolar" value="redePublicaIntegral">
+                    Ensino Fundamental cursado integralmente em Instituição da Rede Pública ou bolsista integral da Rede Particular (85)
+                </label>
+                <label>
+                    <input type="radio" name="origemEscolar" value="parcial01">
+                    Ensino Fundamental cursado parcialmente na Rede Pública, com no máximo 01 ano na Rede Particular ou bolsista parcial da Rede Particular (80)
+                </label>
+                <label>
+                    <input type="radio" name="origemEscolar" value="parcial02">
+                    Ensino Fundamental cursado parcialmente na Rede Pública, com no mínimo 02 anos e máximo de 03 anos na Rede Particular (75)
+                </label>
+                <label>
+                    <input type="radio" name="origemEscolar" value="redeParticularIntegral">
+                    Ensino Fundamental cursado integralmente em Rede Particular (70)
+                </label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Médias 9º ano</legend>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Disciplinas</th>
+                            <th>6º Ano</th>
+                            <th>7º Ano</th>
+                            <th>8º Ano</th>
+                            <th>9º Ano</th>
+                            <th>Média Aritmética</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Língua Portuguesa</td>
+                            <td><input type="number" id="portugues6" name="portugues6" min="0" max="100"></td>
+                            <td><input type="number" id="portugues7" name="portugues7" min="0" max="100"></td>
+                            <td><input type="number" id="portugues8" name="portugues8" min="0" max="100"></td>
+                            <td><input type="number" id="portugues9" name="portugues9" min="0" max="100"></td>
+                            <td><input type="number" id="mediaPortugues" name="mediaPortugues" min="0" max="100"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Matemática</td>
+                            <td><input type="number" id="matematica6" name="matematica6" min="0" max="100"></td>
+                            <td><input type="number" id="matematica7" name="matematica7" min="0" max="100"></td>
+                            <td><input type="number" id="matematica8" name="matematica8" min="0" max="100"></td>
+                            <td><input type="number" id="matematica9" name="matematica9" min="0" max="100"></td>
+                            <td><input type="number" id="mediaMatematica" name="mediaMatematica" min="0" max="100"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+
+            <fieldset>
+                <legend>Pontuação Final</legend>
+                <label for="pontuacaoBeneficio">Pontuação de Beneficiário + Origem Escolar:</label>
+                <input type="number" id="pontuacaoBeneficio" name="pontuacaoBeneficio">
+
+                <label for="entrevista">Entrevista (0 a 100):</label>
+                <input type="number" id="entrevista" name="entrevista" min="0" max="100">
+
+                <label for="totalGeral">Total Geral da Pontuação:</label>
+                <input type="number" id="totalGeral" name="totalGeral">
+            </fieldset>
+
+            <fieldset>
+                <legend>Declarações</legend>
+                <label for="nomeFuncionario">Nome do funcionário:</label>
+                <input type="text" id="nomeFuncionario" name="nomeFuncionario">
+
+                <p>Comprovante de inscrição para classificação – 2024.</p>
+                <label for="numeroInscricaoComprovante">Número da inscrição:</label>
+                <input type="text" id="numeroInscricaoComprovante" name="numeroInscricaoComprovante">
+
+                <label for="nomeComprovante">Nome:</label>
+                <input type="text" id="nomeComprovante" name="nomeComprovante">
+
+                <label for="totalPontos">Total de pontos obtidos:</label>
+                <input type="number" id="totalPontos" name="totalPontos">
+
+                <label for="cursoComprovante">Curso:</label>
+                <input type="text" id="cursoComprovante" name="cursoComprovante">
+
+                <label for="turnoComprovante">Turno:</label>
+                <input type="text" id="turnoComprovante" name="turnoComprovante">
+
+                <p>Dois Vizinhos, ____ de _________________ de 20___.</p>
+            </fieldset>
+
+            <button type="submit" class="btnEnviar">Enviar</button>
+        </form>
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="footer-logo">
+                <img src="imagens/logoGoverno.png" alt="Logo do Govern  o">
+                <h2>Governo do Estado do Paraná</h2>
+            </div>
+            <div class="codigos">
+                <h3>Links úteis</h3>
+                <ul>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Suporte</a></li>
+                </ul>
+            </div>
+            <div class="contatos">
+                <h3>Contato</h3>
+                <p>Email: rafaelpilonetto59@gmail.com</p>
+                <p>Email: christianmartinkoski@gmail.com</p>
+                <p>Telefone: (46)999890251</p>
+                <p>Telefone: (46)99414639</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Governo do Estado do Paraná • Todos os direitos reservados</p>
+        </div>
+    </footer>
+<script>
+const params = new URLSearchParams(window.location.search);
+const usuarioId = params.get("id");
+
+if (!usuarioId) {
+    alert("Usuário não especificado!");
+    window.location.href = "candidatos.html";
+}
+
+// Pega dados do usuário e preenche o formulário
+fetch(`http://localhost:3000/candidatos/${usuarioId}`)
+  .then(res => res.json())
+  .then(usuario => {
+    document.getElementById("numeroInscricao").value = parseInt(usuarioId);
+    document.getElementById("nomeCandidato").value = usuario.nome;
+    document.getElementById("cgm").value = usuario.cpf;
+    document.getElementById("curso").value = usuario.curso;
+    document.getElementById("turno").value = usuario.turno;
+        
+
+    // Médias
+    document.getElementById("portugues6").value = usuario.portugues_6ano || "";
+    document.getElementById("portugues7").value = usuario.portugues_7ano || "";
+    document.getElementById("portugues8").value = usuario.portugues_8ano || "";
+    document.getElementById("portugues9").value = usuario.portugues_9ano || "";
+
+    document.getElementById("mediaPortugues").value = usuario.media_9ano || "";
+
+    document.getElementById("matematica6").value = usuario.matematica_6ano || "";
+    document.getElementById("matematica7").value = usuario.matematica_7ano || "";
+    document.getElementById("matematica8").value = usuario.matematica_8ano || "";
+    document.getElementById("matematica9").value = usuario.matematica_9ano || "";
+    document.getElementById("mediaMatematica").value = usuario.media_final_disciplinas || "";
+
+    // Pontuação final
+    document.getElementById("pontuacaoBeneficio").value = usuario.pontuacao_benef_origem || "";
+    document.getElementById("entrevista").value = usuario.entrevista || "";
+    document.getElementById("totalGeral").value = usuario.total_geral || "";
+
+    // Declarações
+    document.getElementById("nomeFuncionario").value = usuario.nome_funcionario || "";
+    document.getElementById("numeroInscricaoComprovante").value = usuario.id || "";
+    document.getElementById("nomeComprovante").value = usuario.nome || "";
+    document.getElementById("totalPontos").value = usuario.total_geral || "";
+    document.getElementById("cursoComprovante").value = usuario.curso || "";
+    document.getElementById("turnoComprovante").value = usuario.turno || "";
+
+    
+    if(usuario.beneficiario === "sim") document.querySelector("input[name='beneficiario'][value='sim']").checked = true;
+    else document.querySelector("input[name='beneficiario'][value='nao']").checked = true;
+
+if(usuario.origem_escolar) {
+  const valorHTML = origemMap[usuario.origem_escolar];
+  const origemInput = document.querySelector(`input[name='origemEscolar'][value='${valorHTML}']`);
+  if(origemInput) origemInput.checked = true;
+}       
+
+  })
+  .catch(err => console.error(err));
+  const origemMap = {
+  "rede_publica_integral": "redePublicaIntegral",
+  "parcial_01": "parcial01",
+  "parcial_02": "parcial02",
+  "rede_particular_integral": "redeParticularIntegral"
+};
+
+const mediaPortugues = (
+  Number(document.getElementById("portugues6").value) +
+  Number(document.getElementById("portugues7").value) +
+  Number(document.getElementById("portugues8").value) +
+  Number(document.getElementById("portugues9").value)
+) / 4;
+// Envio do formulário com PATCH
+document.querySelector(".formulario").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+ const usuarioAtualizado = {
+  numero_inscricao: parseInt(document.getElementById("numeroInscricao").value),
+  nome: document.getElementById("nomeCandidato").value,
+  cpf: document.getElementById("cgm").value,
+  curso: document.getElementById("curso").value,
+  turno: document.getElementById("turno").value,
+
+  beneficiario: document.querySelector("input[name='beneficiario']:checked")?.value,
+  nis: document.getElementById("nis").value,
+  origem_escolar: document.querySelector("input[name='origemEscolar']:checked")?.value,
+
+  portugues_6ano: Number(document.getElementById("portugues6").value),
+  portugues_7ano: Number(document.getElementById("portugues7").value),
+  portugues_8ano: Number(document.getElementById("portugues8").value),
+  portugues_9ano: Number(document.getElementById("portugues9").value),
+
+  media_9ano: Number(document.getElementById("mediaPortugues").value),
+
+  matematica_6ano: Number(document.getElementById("matematica6").value),
+  matematica_7ano: Number(document.getElementById("matematica7").value),
+  matematica_8ano: Number(document.getElementById("matematica8").value),
+  matematica_9ano: Number(document.getElementById("matematica9").value),
+  media_final_disciplinas: Number(document.getElementById("mediaMatematica").value),
+
+  pontuacao_benef_origem: Number(document.getElementById("pontuacaoBeneficio").value),
+  entrevista: Number(document.getElementById("entrevista").value),
+  total_geral: Number(document.getElementById("totalGeral").value),
+
+  nome_funcionario: document.getElementById("nomeFuncionario").value,
+  numero_inscricao_comprovante: document.getElementById("numeroInscricaoComprovante").value,
+  nome_comprovante: document.getElementById("nomeComprovante").value,
+  total_pontos: Number(document.getElementById("totalPontos").value),
+  curso_comprovante: document.getElementById("cursoComprovante").value,
+  turno_comprovante: document.getElementById("turnoComprovante").value
+};
+
+
+    try {
+        const response = await fetch(`http://localhost:3000/candidatos/${usuarioId}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(usuarioAtualizado)
+        });
+
+        if (!response.ok) throw new Error("Erro ao atualizar usuário");
+
+        alert("Usuário atualizado com sucesso!");
+        window.location.href = "candidatos.html";
+    } catch (err) {
+        console.error(err);
+        alert("Erro ao atualizar usuário!");
+    }
+});
+</script>
+</body>
+</html>

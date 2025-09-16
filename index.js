@@ -49,7 +49,7 @@ let candidatos = [
     },
     {
         id: 2,
-        nome: "Mariana Silva",
+        nome: "Tayla Kauana",
         rg: "15032023",
         expe_por: "ssp",
         cpf: "23041999",
@@ -87,7 +87,7 @@ let candidatos = [
     },
     {
         id: 3,
-        nome: "Lucas Pereira",
+        nome: "Christian Martinkoski",
         rg: "28062022",
         expe_por: "ssp",
         cpf: "12072000",
@@ -125,7 +125,7 @@ let candidatos = [
     },
     {
         id: 4,
-        nome: "Ana Beatriz",
+        nome: "Rafael Luiz",
         rg: "01112021",
         expe_por: "ssp",
         cpf: "03122001",

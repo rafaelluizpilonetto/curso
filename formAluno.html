@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Inscrição - Aluno</title>
+    <link rel="stylesheet" href="formAluno.css">
+</head>
+<body>
+     <header>
+            <div class="bannerTopo">
+                
+                <!-- Esquerda -->
+                <div class="lado-esquerdo">
+                <img src="imagens/logoGoverno.png" alt="Logo do Governo" class="logoTopo">
+                <div class="textosTopo">
+                    <h1>Governo do Estado do Paraná</h1>
+                    <p class="subtitulo">Portal Educacional</p>
+                </div>
+                </div>
+                <!-- Direita -->
+                <nav class="main-nav">
+                <ul>
+                    <li><a href="home.html"><i class="fas fa-book"></i> Cursos</a></li>
+                    <li><a href="https://g1.globo.com/saude/noticia/2025/04/14/por-que-bolsonaro-fez-varias-cirurgias-apos-facada-quanto-mais-mexe-maior-o-risco.ghtml"><i class="fas fa-newspaper"></i> Notícias</a></li>
+                    <li><a href="#"><i class="fas fa-graduation-cap"></i>Estatisticas</a></li>
+                </ul>
+                </nav>
+
+            </div>
+        </header>
+
+    <main>
+        <div class="formulario">
+            <h2>Formulário de Inscrição - Aluno</h2>
+
+            <form method="post">
+                <fieldset>
+                    <legend>Informações Pessoais</legend>
+
+                    <label for="nome">Nome do(a) Candidato(a):</label>
+                    <input type="text" id="nome" name="nome" value="Christian Martinkoski" required>
+
+                    <label for="rg">RG:</label>
+                    <input type="text" id="rg" name="rg" value="123456789" required>
+
+                    <label for="expedido">Expedido por:</label>
+                    <input type="text" id="expedido" name="expedido" value="SSP-PR" required>
+
+                    <label for="cpf">CPF:</label>
+                    <input type="text" id="cpf" name="cpf" value="12345678901" required>
+
+                    <label for="data_nascimento">Data de Nascimento:</label>
+                    <input type="date" id="data_nascimento" name="data_nascimento" value="2008-05-20" required>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Endereço</legend>
+
+                    <label for="endereco">Endereço:</label>
+                    <input type="text" id="endereco" name="endereco" value="Rua Exemplo" required>
+
+                    <label for="numero">Nº:</label>
+                    <input type="text" id="numero" name="numero" value="123" required>
+
+                    <label for="bairro">Bairro:</label>
+                    <input type="text" id="bairro" name="bairro" value="Centro" required>
+
+                    <label for="municipio">Município:</label>
+                    <input type="text" id="municipio" name="municipio" value="Francisco Beltrão" required>
+
+                    <label for="uf">UF:</label>
+                    <input type="text" id="uf" name="uf" maxlength="2" value="PR" required>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Contato</legend>
+
+                    <label for="telefone_fixo">Telefone Fixo:</label>
+                    <input type="text" id="telefone_fixo" name="telefone_fixo" value="4630112233">
+
+                    <label for="celular_a">Celular(A):</label>
+                    <input type="text" id="celular_a" name="celular_a" value="46999880251">
+
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" value="christianmartinkoski@gmail.com" required>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Curso Pretendido</legend>
+
+                    <label for="curso">Curso:</label>
+                    <input type="text" id="curso" name="curso" value="Desenvolvimento de Sistemas" required>
+                </fieldset>
+
+                <button type="submit" class="btnEnviar">Enviar</button>
+                <button type="reset" class="btnEnviar">Limpar</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <div class="footer-logo">
+                <img src="imagens/logoGoverno.png" alt="Logo do Governo">
+                <h2>Governo do Estado do Paraná</h2>
+            </div>
+            <div class="codigos">
+                <h3>Links úteis</h3>
+                <ul>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Suporte</a></li>
+                </ul>
+            </div>
+            <div class="contatos">
+                <h3>Contato</h3>
+                <p>Email: rafaelpilonetto59@gmail.com</p>
+                <p>Email: christianmartinkoski@gmail.com</p>
+                <p>Telefone: (46) 99989-0251</p>
+                <p>Telefone: (46) 99414-639</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Governo do Estado do Paraná • Todos os direitos reservados</p>
+        </div>
+    </footer>
+</body>
+
+<script>
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+const dados = {
+  nome: form.nome.value,
+  rg: form.rg.value,
+  expe_por: form.expedido.value,
+  cpf: form.cpf.value,
+  data_nasc: form.data_nascimento.value,
+  rua: form.endereco.value,
+  numero_casa: form.numero.value,
+  bairro: form.bairro.value,
+  cidade: form.municipio.value,
+  uf: form.uf.value,
+  tel_fixo: form.telefone_fixo.value,
+  celular_a: form.celular_a.value,
+  celular_b: '',
+  email: form.email.value,
+  curso: form.curso.value,
+  turno: '',
+  beneficiario: '',
+  nis: '',
+  valor_beneficiario: '',
+  origem_escolar: '',
+  valor_origem: '',
+  portugues_6ano: '',
+  portugues_7ano: '',
+  portugues_8ano: '',
+  portugues_9ano: '',
+  matematica_6ano: '',
+  matematica_7ano: '',
+  matematica_8ano: '',
+  matematica_9ano: '',
+  media_9ano: '',
+  media_final_disciplinas: '',
+  pontuacao_benef_origem: '',
+  entrevista: '',
+  total_geral: ''
+};
+
+
+    fetch("http://127.0.0.1:3000/candidatos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(dados)
+    })
+      .then(async (response) => {
+        if (!response.ok) {
+          const errMsg = await response.text();
+          throw new Error(`Erro ${response.status}: ${errMsg}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        alert("Dados enviados com sucesso!");
+        // window.location.href = "candidatos.html";
+      })
+      .catch((error) => console.error("Erro:", error));
+  });
+</script>
+</html>
