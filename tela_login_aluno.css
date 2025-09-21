@@ -1,12 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
+body, footer, .footer {
+    font-family: 'Nunito', sans-serif;
 }
+
+
 
 .bannerTopo {
     width: 100%;
@@ -215,6 +219,34 @@ footer {
 .contatos p {
     margin: 6px 0;
 }
+/* Tooltip */
+.codigos ul li a {
+    position: relative; /* necessário para posicionar o tooltip */
+}
+
+.codigos ul li a::after {
+    content: attr(data-tooltip); /* pega o texto do atributo data-tooltip */ /*usei chatgpt aqui*/
+    position: absolute;
+    bottom: 125%; /* acima do link */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1E2A4F;
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+    font-size: 13px;
+    z-index: 10;
+}
+
+.codigos ul li a:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
 
 a {
     text-decoration: none; 

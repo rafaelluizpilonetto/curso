@@ -17,12 +17,14 @@
     "url": "https://github.com/Ykwim-77/curso/issues"
   },
   "homepage": "https://github.com/Ykwim-77/curso#readme",
-  "description": "",
   "dependencies": {
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "email": "^0.2.6",
+    "express": "^5.1.0",
     "font-awesome-icons": "^1.6.0",
     "nodemailer": "^7.0.6"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }

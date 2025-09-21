@@ -1,12 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
+
+body, footer, .footer {
+    font-family: 'Nunito', sans-serif;
 }
+
+
 
 /* HEADER */
 .bannerTopo {
@@ -84,89 +89,6 @@ main {
     margin-bottom: 40px;
 }
 
-/* Theme Toggle */
-.theme-toggle {
-    display: flex;
-    align-items: center;
-}
-
-.theme-checkbox {
-    opacity: 0;
-    position: absolute;
-}
-
-.theme-label {
-    background-color: #1E2A4F;
-    border-radius: 50px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px;
-    position: relative;
-    height: 26px;
-    width: 50px;
-    transform: scale(1.1);
-}
-
-.theme-label .theme-ball {
-    background-color: #fff;
-    border-radius: 50%;
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    height: 22px;
-    width: 22px;
-    transform: translateX(0px);
-    transition: transform 0.2s linear;
-}
-
-.theme-checkbox:checked + .theme-label .theme-ball {
-    transform: translateX(24px);
-}
-
-.theme-label i {
-    font-size: 12px;
-}
-
-.theme-label .fa-sun {
-    color: #f39c12;
-}
-
-.theme-label .fa-moon {
-    color: #f1c40f;
-}
-
-/* Dark Theme Styles */
-.dark-theme {
-    background: #1a1a1a;
-    color: #f0f0f0;
-}
-
-.dark-theme .news-section {
-    background: #2d2d2d;
-}
-
-.dark-theme .news-card {
-    background: #333;
-}
-
-.dark-theme .news-content h3 {
-    color: #7a8ccc;
-}
-
-.dark-theme .barra-pesquisa {
-    border-color: #7a8ccc;
-}
-
-.dark-theme .barra-pesquisa input {
-    background: #333;
-    color: #fff;
-}
-
-.dark-theme .main-nav {
-    background: #0f1a3d;
-}
 
 .cursosProcurados {
     text-align: center;
@@ -415,6 +337,34 @@ footer {
 .contatos p {
     margin: 6px 0;
 }
+/* Tooltip */
+.codigos ul li a {
+    position: relative; /* necessário para posicionar o tooltip */
+}
+
+.codigos ul li a::after {
+    content: attr(data-tooltip); /* pega o texto do atributo data-tooltip */ /*usei chatgpt aqui*/
+    position: absolute;
+    bottom: 125%; /* acima do link */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1E2A4F;
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+    font-size: 13px;
+    z-index: 10;
+}
+
+.codigos ul li a:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
 
 a {
     text-decoration: none; 
@@ -425,33 +375,9 @@ a {
 .copyright {
     text-align: center;
     margin-top: 30px;
-    border-top: 1px solid #444;
+    border-top: 1px solid #000000;
     padding-top: 10px;
     font-size: 14px;
-    color: #555555;
+    color: #000000;
 }
 
-/* RESPONSIVO */
-@media (max-width: 768px) {
-    .bannerTopo {
-        padding: 10px 0;
-    }
-    .bannerTopo h1 {
-        font-size: 20px;
-    }
-    .subtitulo {
-        font-size: 12px;
-    }
-    .card {
-        width: 200px;
-        height: 300px;
-        font-size: 16px;
-        padding: 15px;
-    }
-    .card h3 {
-        font-size: 18px;
-    }
-    .card p {
-        font-size: 14px;
-    }
-}
